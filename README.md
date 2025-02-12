@@ -23,4 +23,5 @@ This is a **Draconic Altar Simulator**, designed to estimate potential profits f
    python altar_calculator.py
    ```  
 
+### Example 
 ![image](https://github.com/Cametolose/Hypixel-Skyblock-Dragon-Altar-Calculator/assets/102823827/c9e6b72f-00cf-4bd4-99cf-dffe3c9abba9)
