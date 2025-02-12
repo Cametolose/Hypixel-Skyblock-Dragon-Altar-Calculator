@@ -12,7 +12,7 @@ This is a **Draconic Altar Simulator**, designed to estimate potential profits f
 1. Clone the repository:  
    ```bash
    git clone https://github.com/Cametolose/Hypixel-Skyblock-Draconic-Altar-Calculator.git
-   cd altar_calculator
+   cd Hypixel-Skyblock-Draconic-Altar-Calculator
    ```  
 2. Install dependencies:  
    ```bash
