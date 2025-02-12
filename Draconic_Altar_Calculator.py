@@ -1,16 +1,19 @@
+# Import
 import os
 import requests
 import random
 import tkinter as tk
 from tkinter import messagebox
 
-
+# Define simulation
 def run_simulation():
+    # Get input values
     try:
         amount = int(entry_amount.get())
         iterations = int(entry_iterations.get())
         instabuy_buyorder = var_buyorder.get() == 1
 
+        # Hypixel API
         url = "https://api.hypixel.net/v2/skyblock/bazaar"
         response = requests.get(url)
         data = response.json()["products"]
@@ -45,7 +48,7 @@ def run_simulation():
         lowest_value = cheapest_fragment[1] if instabuy_buyorder else cheapest_fragment[2]
         total_price = amount * lowest_value
 
-        # Profit
+        # Get result items price with 1% sell tax
         essence_sellorder = data["ESSENCE_DRAGON"]["quick_status"]["buyPrice"] * 0.99
         ritual_sellorder = data["RITUAL_RESIDUE"]["quick_status"]["buyPrice"] * 0.99
         summoning_sellorder = data["SUMMONING_EYE"]["quick_status"]["buyPrice"] * 0.99
@@ -58,13 +61,14 @@ def run_simulation():
         summoning_chance = 0.0482
         horn_chance = 0.0241
 
-        # int thing
+        # Initialise total amounts & profit
         total_fragment_amount = 0
         total_ritual_amount = 0
         total_summoning_amount = 0
         total_horn_amount = 0
         total_profit = 0
 
+        # Calculate based on the amount of iterations
         for _ in range(iterations):
             # Checking for items
             fragment_amount = 0
@@ -87,23 +91,26 @@ def run_simulation():
                     else:
                         horn_amount += 1
 
-            # End Calculation
+            # Profit calculation
             profit = ((essence_sellorder * amount / 2) + (ritual_amount * ritual_sellorder) + (
                         summoning_amount * summoning_sellorder) + (horn_amount * horn_sellorder) + (
                                   fragment_amount * lowest_value)) - total_price
 
+            # Add up to total amount
             total_fragment_amount += fragment_amount
             total_ritual_amount += ritual_amount
             total_summoning_amount += summoning_amount
             total_horn_amount += horn_amount
             total_profit += profit
 
+        # Calculate average amounts
         avg_fragment_amount = total_fragment_amount / iterations
         avg_ritual_amount = total_ritual_amount / iterations
         avg_summoning_amount = total_summoning_amount / iterations
         avg_horn_amount = total_horn_amount / iterations
         avg_profit = total_profit / iterations
 
+        # Text as a result
         result_text = (
             f"\nCheapest Fragment: {fragment_name}\nAmount: {amount:,}\nTotal Price: {int(total_price):,} coins\n"
             f"Price per Fragment: {int(lowest_value):,} coins\nAverage Profit: {int(avg_profit):,} coins\n\n"
@@ -113,6 +120,7 @@ def run_simulation():
 
         result_label.config(text=result_text)
 
+    # Error handling
     except Exception as e:
         messagebox.showerror("Error", str(e))
 
