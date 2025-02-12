@@ -27,4 +27,4 @@ This is a **Draconic Altar Simulator**, designed to estimate potential profits f
 ![image](https://github.com/Cametolose/Hypixel-Skyblock-Dragon-Altar-Calculator/assets/102823827/c9e6b72f-00cf-4bd4-99cf-dffe3c9abba9)
 
 ## License
-This project is licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license. See the LICENSE file for more details.
+This project is licensed under the **MIT License**. See the LICENSE file for more details.
